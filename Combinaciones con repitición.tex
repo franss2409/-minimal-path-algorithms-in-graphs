@@ -1,0 +1,45 @@
+\documentclass[a4,papper]{article}
+\usepackage[total={14cm,21cm},centering]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{UTP}
+\chead{}
+\rhead{CICLO 2018-I}
+\lfoot{}
+\cfoot{}
+\rfoot{\thepage}
+\renewcommand{\headrulewidth}{2pt}
+\renewcommand{\footrulewidth}{2pt}
+\newtheorem{teo}{Teorema}
+
+\title{\bf Combinaciones con reemplazo}
+\date{}
+
+
+\begin{document}
+
+\maketitle
+\ \\[-1.5cm]
+\noindent Muestra que el número de maneras diferentes de $n$ objetos indistinguibles puede ser colocado en $k$ cajas distinguibles es:\\
+$$
+\binom{n+k-1}{k-1}=\binom{n+k-1}{n}
+$$
+\emph{Demostración 1:}\\
+Sean $n$ los objetos indistinguibles representados por $n$ naranjas idénticas y las  $k$ cajas distinguibles como $k$ personas.Queremos contar el número que $n$ naranjas idénticas pueden ser divididas entre $k$ personas.Para esto agregamos $k-1$ manzanas a las naranjas.
+Entonces tenemos  las $n+k-1$ manzanas y naranjas y las alineamos en un orden aleatorio:\\
+De todas las naranjas que preceden a la primera manzana a la primera persona,todas las naranjas entre la primera y segunda manzana,todas las naranjas entre la segunda y tercera manzana y  asi sucesivamente .\\
+Se debe tener en cuenta que si, por ejemplo,aparece una manzana al principio en la línea aleatoria, entonces la primera no recibe naranjas, de manera similar si dos manzanas aparecen una la lado de la otra, en las posiciones $i$ e $i+1$ entonces la persona en la posición $i+1$ no recibe naranjas.\\
+Este proceso establece una correspondencia uno a uno entre el número de maneras en que $n$ naranjas idénticas puedan ser divididas entre $k$ personas y el número de permutaciones distinguibles de $n+k-1$ naranjas y manzanas de las cuales $n$ naranjas son idénticas.\\
+\teo Al número de permutaciones distinguibles de $n$ objetos de $k$ diferentes tipos, donde $n_1$ son iguales, $n_2$ son iguales,\ldots,$n_k$ son iguales y $n=n_1+\ldots+n_k$ es:\\
+$$
+\frac{n!}{n_1!\times n_2! \times \ldots \times n_k!}
+$$
+Así:\\
+$$
+\frac{(n+k-1)!}{n!(k-1)!}=\binom{n+k-1}{k-1}=\binom{n+k-1}{n} \qquad\blacksquare
+$$
+\end{document}
