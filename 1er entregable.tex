@@ -1,29 +1,82 @@
 \documentclass[a4,papper]{IEEEtran}
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{here}
 \title{Algoritmos de corte mínimo en grafos}
-\author{Franss Cruz,\thanks{fransscruz18@gmail.com}
-Davis García\thanks{yums123@hotmail.com},Fernando Macuri,\thanks{rfmo2014@hotmail.com}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\author{Franss Cruz\quad\thanks{fransscruz18@gmail.com}
+Davis García\quad\thanks{yums123@hotmail.com}Fernando Macuri\quad\thanks{rfmo2014@hotmail.com}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 \maketitle
+\begin{IEEEkeywords}
+Grafo,vértice,rama,algoritmo.
+\end{IEEEkeywords}
 \section{Introducción}
-\IEEEPARstart{L}a tería de probabilidad proporciona varios modelos matemáticos para la descripción de fenómenos sujeto a influjos csuales, y tiene como objetivo escemcial la compresión matemática de las regularidades de los fenomenos aleatorios.\\
-La teoría de probabilidad se construye de manera axiomática, de acuerdo con procedimento probado y muy utilizado hasta hoy día, y se sirve en gran medida de los métodos y resultados del análisis.\\
-La Estadística matemática proporciona, sobre la base de la teoría de probabilidades, métodos mediante los cuales se puede obtener información sobre distintas poblaciones e investigar, utilizando datosmuestrales aleatorios;con esto se da origen también a métodos de ajuste de un modelo matemático, que considere efectos aleatorios, al proceso real corrspondiente
-\ \\[2pt]
-\section{Diseño del experimento}
-\IEEEPARstart{L}a tería de probabilidad proporciona varios modelos matemáticos para la descripción de fenómenos sujeto a influjos csuales, y tiene como objetivo escemcial la compresión matemática de las regularidades de los fenomenos aleatorios.\\
-La teoría de probabilidad se construye de manera axiomática, de acuerdo con procedimento probado y muy utilizado hasta hoy día, y se sirve en gran medida de los métodos y resultados del análisis.\\
-La Estadística matemática proporciona, sobre la base de la teoría de probabilidades, métodos mediante los cuales se puede obtener información sobre distintas poblaciones e investigar, utilizando datosmuestrales aleatorios;con esto se da origen también a métodos de ajuste de un modelo matemático, que considere efectos aleatorios, al proceso real corrspondiente.\\
-\section{Estado del arte}
-\IEEEPARstart{L}a tería de probabilidad proporciona varios modelos matemáticos para la descripción de fenómenos sujeto a influjos csuales, y tiene como objetivo escemcial la compresión matemática de las regularidades de los fenomenos aleatorios.\\
-La teoría de probabilidad se construye de manera axiomática, de acuerdo con procedimento probado y muy utilizado hasta hoy día, y se sirve en gran medida de los métodos y resultados del análisis.\\
-La Estadística matemática proporciona, sobre la base de la teoría de probabilidades, métodos mediante los cuales se puede obtener información sobre distintas poblaciones e investigar, utilizando datosmuestrales aleatorios;con esto se da origen también a métodos de ajuste de un modelo matemático, que considere efectos aleatorios, al proceso real corrspondiente.\\
+\ \\[1pt]
+{\large \bf \underline{Noción de un grafo}}\\
+\IEEEPARstart{H}ay muchas situaciones que puden representarse mediante un esquema formado por dos cosas:
 \begin{itemize}[\IEEEsetlabelwidth{5}]
-\item[1] trabajo grupal
-\item[2] LALALALALALA
+\item Un conjunto finitos de puntos.
+\item Un conjunto de líneas que unen algunos pares de estos puntos.
+\end{itemize}\\
+
+\noindent Por ejemplo los puntos pueden representar participantes de una fiesta de cumpleaños y las uniones corresponden a pares de participantes que se conocen mutuamente. O también estos puntos pueden representarse cruces de calles de una cuidad y las calles sus conexiones.Una red de transporte municipal o una red de tren se representan también por un esquema de este tipo, y a menudo circuitos eléctricos tienen estas carecterísticas similares.En tales casos, los puntos se llaman normalmente vértices( o nodos )y sus uniones ramas.\\
+Con esto llegamos a la noción matemática de grafo, que es uno de los conceptos básicos de la matemática discreta.\\
+\ \\[1mm]
+{\large \bf {Definición de un grafo:}}
+Un grafo es un par ordenado $(V,E)$, donde $V$ es algún conjunto y $E$ es un conjunto de subconjuntos de dos puntos de $V$.Los elementos del conjunto $V$ se llaman vértices del grafo $G$ y los elementos de $E$ se llaman ramas de $G$. \\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.25]{graf2.png}
+\end{figure}   
+\begin{center}
+Grafo completo $k_{23}$
+\end{center}
+
+\newpage
+{\noindent \large \bf \underline {Aplicaciones de los grafos}}\\
+\begin{enumerate}
+    \item En Mapas:\\
+     Una de las aplicaciones más importantes de los grafos en los mapas, es para determinar e intentar disminuir el tiempo y camino en recorridos entre sitios distintos.\\
+     Otra aplicación de los grafos es la del coloreo, es muy usada cuando hablamos de pintar mapas,el objetivo es colorear los vértices de un grafo de tal manera que no existan dos vértices adyacentes del mismo color, ademas de que tenemos que usar el menor número de colores posibles.\\
+    El algoritmo de coloración dice que basta solo de 4 colores para pintar cualquier mapa; este algoritmo es llamado el {\emph{"Teorema de los 4 Colores"}}.
+    \item En Costos:\\
+    En este tipo de aplicación de los grafos se pueden realizar cálculos de costos; en este caso, la arista del grafo puede representar cosas como: la distancia en kilómetros, el precio de un tiquete de avión o el costo de expandir una red telefónica entre los dos puntos que representan los vértices de los extremos.\\
+    La aplicación consiste en encontrar la forma más rápida o barata de ir de una ciudad a otra o de crear una red telefónica, o el punto más adecuado para instalar un hospital en una ciudad.\\
+
+\end{enumerate}
+{\noindent \large \bf {Algoritmo:}}
+Es una secuencia de instrucciones para resolver un problema en cuestión.\\
+{\noindent \large \bf {Objetivo:}}
+ Nos centraremos en algoritmos que nos den el camino más corto entre dos vértices cualesquiera,como hemos visto estos vértices se pueden representar de varias formas en la vida real,y en términos comerciales nos darán el menor costo,energía,tiempo,\ldots lo cuál se busca siempre en todo ámbito social y laboral.\\
+{\noindent \large \bf \underline {Algoritmos de corte mínimo:}}\\
+
+\begin{itemize}[\IEEEsetlabelwidth{4}]
+    \item Algoritmo de Kruskal.
+    \item Algoritmo de Dijkstra.
+    \item Algoritmo De flujo máximo.
+    \item Algoritmo De Flody Y Warshall.
 \end{itemize}
+
+
+
+
+
+
+\section{Diseño del experimento}
+\IEEEPARstart{}
+
+
+
+
+
+\section{Estado del arte}
+\IEEEPARstart{}
+
+
+
 
 \begin{IEEEkeywords}
 Tarta de Manzana, Recetas, Manzanas.
